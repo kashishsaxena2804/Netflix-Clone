@@ -1,11 +1,15 @@
-
-import './App.css';
-
+import React from 'react';
+import './App.scss';
+import Header from './components/Header';
+import HomeBanner from './components/HomeBanner';
 function App() {
   return (
-    <div className="App">
-      hello
-    </div>
+    <React.Fragment>
+      <Header/>
+      <HomeBanner/>
+    </React.Fragment>
   );
 }
+
+
 export default App;
