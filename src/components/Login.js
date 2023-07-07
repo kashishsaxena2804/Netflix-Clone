@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
+
+  const onSignInClickHandler = (e) =>{
+    e.preventDefault();
+    navigate('/dashboard');
+  }
     return (
       <div className="login">
         <div className="holder">
           <h1 className="text-white">Sign In</h1>
           <br/>
           <form>
-            <input className="form-control" type="email" placeholder="Email"/>
+            <input className="form-control " type="email" placeholder="Email"/>
             <input className="form-control" type="password" placeholder="Password"/>
-            <button className="btn btn-danger btn-block">Sign In</button>
+            <button className="btn btn-danger btn-block" onClick={onSignInClickHandler}>Sign In</button>
             <br/>
             <div className="form-check">
               <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
