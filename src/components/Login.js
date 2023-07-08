@@ -1,20 +1,43 @@
 import { useNavigate } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseConfig } from "./firebaseConfig" ; 
+import { useState } from "react";
+import { error } from "jquery";
 
 const Login = () => {
+  const app = initializeApp(firebaseConfig);
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isUserExist, setUserExist ] = useState(false);
+
+  const auth = getAuth();
 
   const onSignInClickHandler = (e) =>{
     e.preventDefault();
-    navigate('/dashboard');
+    signInWithEmailAndPassword(auth,email, password)
+    .then(auth => {
+      if(auth){
+        navigate('/dashboard');
+      }
+    })
+    .catch (error => setUserExist(true));
+    //user-not-found
   }
+
+  const emailOnChangeHandler = (e) => {
+    setEmail(e.target.value)
+  }
+
     return (
       <div className="login">
         <div className="holder">
           <h1 className="text-white">Sign In</h1>
           <br/>
           <form>
-            <input className="form-control " type="email" placeholder="Email"/>
-            <input className="form-control" type="password" placeholder="Password"/>
+            <input className="form-control " value={email} onChange={emailOnChangeHandler} type="email" placeholder="Email"/>
+            <input className="form-control" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Password"/>
             <button className="btn btn-danger btn-block" onClick={onSignInClickHandler}>Sign In</button>
             <br/>
             <div className="form-check">
@@ -26,6 +49,7 @@ const Login = () => {
           </form>
           <br/>
           <br/>
+          { isUserExist && <p className="text-danger">Sorry, we can't find an account with this email address. Please try again or create a new account.</p>}
           <div className="login-form-other">
             <div className="login-signup-now">New to Netflix? &nbsp;
               <a className=" " target="_self" href="/">Sign up now</a>.
