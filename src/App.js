@@ -18,7 +18,16 @@ function App() {
             </React.Fragment>
           }/>
           <Route path="/login" element={
-              <Login/>
+              <React.Fragment>
+                <Header/>
+                <Login page={true}/>
+              </React.Fragment>
+          }/>
+          <Route path="/register" element={
+              <React.Fragment>
+                <Header/>
+                <Login page= {false}/>
+              </React.Fragment>
           }/>
           <Route path="/dashboard" element={
               <React.Fragment>

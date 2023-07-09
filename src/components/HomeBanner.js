@@ -11,7 +11,7 @@ const HomeBanner = () => {
           </div>
         </div>
         <div className="shadow"></div>
-        <img className="concord-img vlv-creative" src="https://assets.nflxext.com/ffe/siteui/vlv3/ce221d7a-8901-41d9-b726-3ea2efe3a650/2f69dcef-463f-44da-b3b9-662b65f33f82/IN-en-20230703-popsignuptwoweeks-perspective_alpha_website_small.jpg"  alt=""></img>
+        <img className="concord-img vlv-creative" src="https://assets.nflxext.com/ffe/siteui/vlv3/ce221d7a-8901-41d9-b726-3ea2efe3a650/2f69dcef-463f-44da-b3b9-662b65f33f82/IN-en-20230703-popsignuptwoweeks-perspective_alpha_website_large.jpg"  alt=""></img>
       </div>
     )
   }
