@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../api/api";
 
-const List  = ({ title, param }) => {
+const List = ({ title, param }) => {
   const [list, setList] = useState([]);
   useEffect(()=>{
     fetchData(param).then( res => setList(res.data.results))
   },[]);
   console.log(list)
-    return(
-      <div className="list">
-        <div className="row">
-          <h2 className="text-white title">Netflix</h2>
-          <div className="col-xs">
-            <div className="row__posters">
+  return(
+    <div className="list">
+      <div className="row">
+        <h2 className="text-white title">{ title }</h2>
+        <div className="col">
+          <div className="row__posters">
             {
               list.map(item => <img
                 className="row__poster row__posterLarge"
@@ -20,11 +20,11 @@ const List  = ({ title, param }) => {
                 alt={item.title}
               />)
             }
-            </div>
           </div>
         </div>
       </div>
-    )
-  }
-  
-  export default List;
+    </div>
+  )
+}
+
+export default List;
