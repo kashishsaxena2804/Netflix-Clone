@@ -1,55 +1,25 @@
-const List  = () => {
+import { useEffect, useState } from "react";
+import { fetchData } from "../api/api";
+
+const List  = ({ title, param }) => {
+  const [list, setList] = useState([]);
+  useEffect(()=>{
+    fetchData(param).then( res => setList(res.data.results))
+  },[]);
+  console.log(list)
     return(
       <div className="list">
         <div className="row">
           <h2 className="text-white title">Netflix</h2>
           <div className="col-xs">
             <div className="row__posters">
-              <img
+            {
+              list.map(item => <img
                 className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
-              <img
-                className="row__poster row__posterLarge"
-                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-kerala-story-et00343918-1683025350.jpg"
-                alt=""
-              />
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt={item.title}
+              />)
+            }
             </div>
           </div>
         </div>
