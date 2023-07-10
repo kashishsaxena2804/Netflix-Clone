@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const URL = "https://api.themoviedb.org/3/authentication";
+const URL = "https://api.themoviedb.org/3";
 const API_KEY =  "3bb94fd8ccb456d2aad05425b59b0d03";
 
 const endpoints ={
